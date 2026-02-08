@@ -1,0 +1,31 @@
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Telegram
+*.session
+*.session-journal
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+*.log
+last_msg_id.txt
+
+# Images (Temporary)
+images/
+temp/
+*.jpg
+*.png
+
+# IDE
+.vscode/
+.idea/
+
+*.db
+*.txt
