@@ -74,10 +74,10 @@ crontab -e
 
 ```bash
 # BlackList Crawler (Non-interactive mode with -y)
-0 * * * * cd /home/ubuntu/Crawler/BlackList && python3 main.py -y >> /home/ubuntu/Crawler/BlackList/cron.log 2>&1
+0 * * * * cd /home/sentimentalhoon/crawlerbot/BlackList && /home/sentimentalhoon/crawlerbot/venv/bin/python3 main.py -y >> /home/sentimentalhoon/crawlerbot/BlackList/cron.log 2>&1
 
 # Market Crawler
-30 * * * * cd /home/ubuntu/Crawler/Market && python3 main_market.py >> /home/ubuntu/Crawler/Market/cron.log 2>&1
+30 * * * * cd /home/sentimentalhoon/crawlerbot/Market && /home/sentimentalhoon/crawlerbot/venv/bin/python3 main_market.py >> /home/sentimentalhoon/crawlerbot/Market/cron.log 2>&1
 ```
 
 > **Note:** `BlackList/main.py` 실행 시 `-y` 또는 `--yes` 플래그를 추가해야 "y/n" 확인 절차 없이 자동으로 등록됩니다.

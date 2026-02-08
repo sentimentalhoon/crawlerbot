@@ -260,9 +260,9 @@ async def main():
     # 0. Init DB
     init_db()
 
-    # 1. Start Telegram Client
+    # 1. Start Telegram Client (Bot Login)
     print("Starting Telegram Client...")
-    await client.start()
+    await client.start(bot_token=config.TELEGRAM_BOT_TOKEN)
     
     # 2. Collection Phase
     print("\n[Phase 1] Collecting Data...")

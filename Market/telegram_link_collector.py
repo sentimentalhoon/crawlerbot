@@ -39,8 +39,8 @@ def save_last_id(last_id):
 
 async def fetch_links(limit=500):
     print(f"Connecting to Telegram... Target: {SOURCE_CHAT}")
-    # User account login (interactive for first time)
-    await client.start()
+    # Bot login (Automatic)
+    await client.start(bot_token=os.getenv("TELEGRAM_BOT_TOKEN"))
     
     last_id = load_last_id()
     print(f"Fetching messages... (Resume from ID: {last_id})")
