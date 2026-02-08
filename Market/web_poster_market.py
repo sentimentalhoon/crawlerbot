@@ -8,12 +8,12 @@ import os
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 class WebPosterMarket:
     def __init__(self):
         # Allow override of base URL via env or config, default to production
-        self.base_url = "https://dool.co.kr/api" 
+        self.base_url = os.getenv("MARKET_TARGET_URL", "https://dool.co.kr/api") 
         self.session = requests.Session()
         self.token = None
         

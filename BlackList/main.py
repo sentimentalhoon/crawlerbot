@@ -6,6 +6,7 @@ from web_poster_api import WebPosterAPI
 from ai_optimizer import AIOptimizer
 from db import init_db, is_posted, save_posted, save_pending, get_pending_items, mark_item_posted
 import re
+import argparse
 
 # Initialize Telegram Client
 client = TelegramClient('blacklist_session', config.API_ID, config.API_HASH)
@@ -180,7 +181,7 @@ async def start_history_fetch():
     
     print(f"History fetch complete. Processed/Checked {count} messages.")
 
-async def interactive_review():
+async def interactive_review(auto_confirm=False):
     print("\n" + "="*40)
     print("      REVIEW AND POSTING PHASE")
     print("="*40)
@@ -194,11 +195,15 @@ async def interactive_review():
 
     print(f"Found {count} pending items ready for upload.")
     
-    # Ask for user permission
-    while True:
-        choice = input("Would you like to register these items? (y/n): ").strip().lower()
-        if choice in ['y', 'n']:
-            break
+    if auto_confirm:
+        print("Auto-confirm enabled (--yes). Proceeding with registration.")
+        choice = 'y'
+    else:
+        # Ask for user permission
+        while True:
+            choice = input("Would you like to register these items? (y/n): ").strip().lower()
+            if choice in ['y', 'n']:
+                break
             
     if choice == 'n':
         print("Operation cancelled. Data remains in Pending state.")
@@ -246,6 +251,10 @@ async def interactive_review():
     print(f"\nBatch processing complete. Success: {success_count}, Failed: {fail_count}")
 
 async def main():
+    parser = argparse.ArgumentParser(description="BlackList Crawler & Poster")
+    parser.add_argument('-y', '--yes', action='store_true', help="Auto-confirm registration (non-interactive mode)")
+    args = parser.parse_args()
+
     print("Starting Crawler (Batch Mode)...")
     
     # 0. Init DB
@@ -261,7 +270,7 @@ async def main():
     
     # 3. Review & Post Phase
     print("\n[Phase 2] Review process...")
-    await interactive_review()
+    await interactive_review(auto_confirm=args.yes)
     
     print("\nAll tasks done. Exiting.")
 

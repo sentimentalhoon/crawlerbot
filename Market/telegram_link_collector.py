@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-# Load local .env
-load_dotenv()
+# Load root .env
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 API_ID = int(os.getenv("API_ID", 0))
 API_HASH = os.getenv("API_HASH")
-SOURCE_CHAT = os.getenv("SOURCE_CHAT_ID", "holempub_adultpc")
+SOURCE_CHAT = os.getenv("MARKET_SOURCE_CHAT_ID", "holempub_adultpc")
 
 if not API_ID:
     print("Error: API_ID not found in .env")
