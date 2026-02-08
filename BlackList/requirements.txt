@@ -1,0 +1,6 @@
+Telethon
+selenium
+webdriver-manager
+python-dotenv
+google-genai
+requests

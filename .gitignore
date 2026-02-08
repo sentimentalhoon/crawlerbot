@@ -28,4 +28,4 @@ temp/
 .idea/
 
 *.db
-*.txt
+last_msg_id.txt
