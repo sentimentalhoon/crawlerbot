@@ -9,8 +9,8 @@ from scraper_pcnala import PCNalaScraper
 from web_poster_market import WebPosterMarket
 
 def extract_id_from_url(url):
-    # url: https://pcnala.com/trade/UUID
-    match = re.search(r'trade/([a-zA-Z0-9-]+)', url)
+    # url: https://domain/trade/UUID or https://domain/trades/UUID
+    match = re.search(r'/trades?/([a-zA-Z0-9-]+)', url, re.IGNORECASE)
     if match:
         return match.group(1)
     return None

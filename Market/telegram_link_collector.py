@@ -23,6 +23,7 @@ client = TelegramClient('market_session', API_ID, API_HASH)
 
 # State file mapping: Source Chat -> Last ID
 LAST_ID_FILE = "last_msg_id.txt"
+TRADE_URL_REGEX = re.compile(r'https?://[^\s)]+/trades?/[a-zA-Z0-9-]+', re.IGNORECASE)
 
 def load_last_id():
     if os.path.exists(LAST_ID_FILE):
@@ -64,24 +65,21 @@ async def fetch_links(limit=500):
             if message.text or message.buttons:
                 found_in_msg = []
                 
-                # Check buttons (Priority: "상세보기")
                 if message.buttons:
                      for row in message.buttons:
                          for btn in row:
-                             # User said button name is "상세보기"
-                             if "상세보기" in btn.text:
-                                 if hasattr(btn, 'url') and btn.url:
-                                     found_in_msg.append(btn.url)
+                             if hasattr(btn, 'url') and btn.url and TRADE_URL_REGEX.search(btn.url):
+                                 found_in_msg.append(btn.url)
                 
                 # If no button found, check text entities fallback
                 if not found_in_msg and message.entities:
                     for ent in message.entities:
-                        if hasattr(ent, 'url') and ent.url and 'pcnala.com/trade/' in ent.url:
+                        if hasattr(ent, 'url') and ent.url and TRADE_URL_REGEX.search(ent.url):
                              found_in_msg.append(ent.url)
 
                 # Regex fallback
                 if not found_in_msg and message.text:
-                    regex_matches = re.findall(r'(https://pcnala\.com/trade/[a-zA-Z0-9-]+)', message.text)
+                    regex_matches = TRADE_URL_REGEX.findall(message.text)
                     found_in_msg.extend(regex_matches)
                 
                 for link in found_in_msg:
