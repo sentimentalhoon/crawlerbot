@@ -10,7 +10,7 @@ def analyze():
         return
 
     print("Navigating to Home...")
-    poster.driver.get("https://dool.co.kr/")
+    poster.driver.get("https://psmo.nmgcloud.uk/")
     time.sleep(3)
     
     print("Clicking 'Blacklist' in Bottom Nav...")

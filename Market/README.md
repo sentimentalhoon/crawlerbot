@@ -1,6 +1,6 @@
 # Dool.co.kr Crawler Setup Manual
 
-이 문서는 다른 컴퓨터에서 `dool.co.kr` 크롤러를 실행하기 위한 설정 방법을 안내합니다.
+이 문서는 다른 컴퓨터에서 `psmo.nmgcloud.uk` 크롤러를 실행하기 위한 설정 방법을 안내합니다.
 
 ## 1. 필수 조건 (Prerequisites)
 *   **Python 3.8 이상**이 설치되어 있어야 합니다.
@@ -8,10 +8,10 @@
 
 ## 2. 설치 (Installation)
 
-1.  이 폴더(`dool.co.kr`)를 통째로 복사합니다.
+1.  이 폴더(`Market`)를 통째로 복사합니다.
 2.  명령 프롬프트(CMD) 또는 터미널을 열고 해당 폴더로 이동합니다.
     ```bash
-    cd path/to/dool.co.kr
+    cd path/to/Market
     ```
 3.  필요한 라이브러리를 설치합니다.
     ```bash

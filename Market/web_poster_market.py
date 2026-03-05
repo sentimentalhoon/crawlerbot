@@ -13,15 +13,15 @@ load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 class WebPosterMarket:
     def __init__(self):
         # Allow override of base URL via env or config, default to production
-        self.base_url = os.getenv("MARKET_TARGET_URL", "https://dool.co.kr/api") 
+        self.base_url = os.getenv("MARKET_TARGET_URL", "https://psmo.nmgcloud.uk/api") 
         self.session = requests.Session()
         self.token = None
         
         # Headers (Mimic Browser but keep it clean)
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": "https://dool.co.kr/",
-            "Origin": "https://dool.co.kr",
+            "Referer": "https://psmo.nmgcloud.uk/",
+            "Origin": "https://psmo.nmgcloud.uk",
             "Accept": "application/json, text/plain, */*"
         })
 
