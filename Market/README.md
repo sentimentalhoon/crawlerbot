@@ -1,7 +1,7 @@
 # PSMO Market Crawler Setup Manual
 
 이 문서는 다른 컴퓨터에서 PSMO 장터 크롤러를 실행하기 위한 설정 방법을 안내합니다.
-기본 대상은 `https://dool.co.kr`이며, staging은 `https://stg-psmo.nmgcloud.uk`를 사용합니다.
+기본 대상은 `https://dool.co.kr`이며, staging은 `https://psmo.nmgcloud.uk`를 사용합니다.
 
 ## 1. 필수 조건 (Prerequisites)
 *   **Python 3.8 이상**이 설치되어 있어야 합니다.

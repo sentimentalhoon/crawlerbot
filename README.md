@@ -2,7 +2,7 @@
 
 This project contains automated crawlers for Telegram channels to fetch and post content to PSMO.
 - Prod: `https://dool.co.kr`
-- Staging: `https://stg-psmo.nmgcloud.uk`
+- Staging: `https://psmo.nmgcloud.uk`
 
 ## Project Structure
 - `BlackList/`: Crawler for blacklist incidents.
@@ -63,9 +63,9 @@ MARKET_SOURCE_CHAT_ID=holempub_adultpc
 
 Staging 예시:
 ```env
-PSMO_BASE_URL=https://stg-psmo.nmgcloud.uk
-BLACKLIST_TARGET_URL=https://stg-psmo.nmgcloud.uk/blacklist/create
-MARKET_TARGET_URL=https://stg-psmo.nmgcloud.uk/api
+PSMO_BASE_URL=https://psmo.nmgcloud.uk
+BLACKLIST_TARGET_URL=https://psmo.nmgcloud.uk/blacklist/create
+MARKET_TARGET_URL=https://psmo.nmgcloud.uk/api
 ```
 
 ---

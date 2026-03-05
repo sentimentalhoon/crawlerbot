@@ -19,7 +19,7 @@ class WebPosterMarket:
             else:
                 self.base_origin = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
         else:
-            # prod: https://dool.co.kr, staging: https://stg-psmo.nmgcloud.uk
+            # prod: https://dool.co.kr, staging: https://psmo.nmgcloud.uk
             self.base_origin = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
             self.base_url = f"{self.base_origin}/api"
         self.session = requests.Session()
