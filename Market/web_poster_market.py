@@ -5,23 +5,31 @@ import hashlib
 import json
 import time
 import os
-import os
 from dotenv import load_dotenv
 
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 class WebPosterMarket:
     def __init__(self):
-        # Allow override of base URL via env or config, default to production
-        self.base_url = os.getenv("MARKET_TARGET_URL", "https://psmo.nmgcloud.uk/api") 
+        configured_api_url = os.getenv("MARKET_TARGET_URL")
+        if configured_api_url:
+            self.base_url = configured_api_url.rstrip("/")
+            if self.base_url.endswith("/api"):
+                self.base_origin = self.base_url[:-4]
+            else:
+                self.base_origin = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
+        else:
+            # prod: https://dool.co.kr, staging: https://stg-psmo.nmgcloud.uk
+            self.base_origin = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
+            self.base_url = f"{self.base_origin}/api"
         self.session = requests.Session()
         self.token = None
         
         # Headers (Mimic Browser but keep it clean)
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": "https://psmo.nmgcloud.uk/",
-            "Origin": "https://psmo.nmgcloud.uk",
+            "Referer": f"{self.base_origin}/",
+            "Origin": self.base_origin,
             "Accept": "application/json, text/plain, */*"
         })
 

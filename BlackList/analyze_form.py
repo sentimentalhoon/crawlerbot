@@ -1,6 +1,9 @@
 from web_poster import WebPoster
 from selenium.webdriver.common.by import By
 import time
+import os
+
+BASE_WEB_URL = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
 
 def analyze():
     poster = WebPoster()
@@ -10,7 +13,7 @@ def analyze():
         return
 
     print("Navigating to Home...")
-    poster.driver.get("https://psmo.nmgcloud.uk/")
+    poster.driver.get(f"{BASE_WEB_URL}/")
     time.sleep(3)
     
     print("Clicking 'Blacklist' in Bottom Nav...")

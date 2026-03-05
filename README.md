@@ -1,6 +1,8 @@
 # CrawlerBot Project
 
-This project contains automated crawlers for Telegram channels to fetch and post content to `psmo.nmgcloud.uk`.
+This project contains automated crawlers for Telegram channels to fetch and post content to PSMO.
+- Prod: `https://dool.co.kr`
+- Staging: `https://stg-psmo.nmgcloud.uk`
 
 ## Project Structure
 - `BlackList/`: Crawler for blacklist incidents.
@@ -49,13 +51,21 @@ API_HASH=your_telegram_api_hash
 TELEGRAM_BOT_TOKEN=your_bot_token
 
 # BlackList Settings
-BLACKLIST_TARGET_URL=https://psmo.nmgcloud.uk/blacklist/create
+PSMO_BASE_URL=https://dool.co.kr
+BLACKLIST_TARGET_URL=https://dool.co.kr/blacklist/create
 BLACKLIST_SOURCE_CHAT_ID=@pc365_112
 GEMINI_API_KEY=your_gemini_key
 
 # Market Settings
-MARKET_TARGET_URL=https://psmo.nmgcloud.uk/api
+MARKET_TARGET_URL=https://dool.co.kr/api
 MARKET_SOURCE_CHAT_ID=holempub_adultpc
+```
+
+Staging 예시:
+```env
+PSMO_BASE_URL=https://stg-psmo.nmgcloud.uk
+BLACKLIST_TARGET_URL=https://stg-psmo.nmgcloud.uk/blacklist/create
+MARKET_TARGET_URL=https://stg-psmo.nmgcloud.uk/api
 ```
 
 ---

@@ -9,15 +9,17 @@ from urllib.parse import unquote
 
 class WebPosterAPI:
     def __init__(self):
-        self.base_url = "https://psmo.nmgcloud.uk/api" # Production API URL
+        # prod: https://dool.co.kr, staging: https://stg-psmo.nmgcloud.uk
+        self.base_origin = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
+        self.base_url = f"{self.base_origin}/api"
         self.session = requests.Session()
         self.token = None
         
         # Headers (Mimic Browser)
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": "https://psmo.nmgcloud.uk/",
-            "Origin": "https://psmo.nmgcloud.uk",
+            "Referer": f"{self.base_origin}/",
+            "Origin": self.base_origin,
             "Accept": "application/json, text/plain, */*"
         })
 

@@ -10,9 +10,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import config
 
-LOGIN_URL = "https://psmo.nmgcloud.uk/login"
-# The user specified this URL for posting
-CREATE_URL = "https://psmo.nmgcloud.uk/blacklist/create" 
+BASE_WEB_URL = os.getenv("PSMO_BASE_URL", "https://dool.co.kr").rstrip("/")
+LOGIN_URL = os.getenv("BLACKLIST_LOGIN_URL", f"{BASE_WEB_URL}/login")
+CREATE_URL = os.getenv("BLACKLIST_TARGET_URL", f"{BASE_WEB_URL}/blacklist/create")
 COOKIES_FILE = "cookies.pkl"
 
 class WebPoster:
@@ -82,7 +82,7 @@ class WebPoster:
         # Navigate via clicks (Nuxt.js compatibility)
         print("Navigating to Home...")
         try:
-            self.driver.get("https://psmo.nmgcloud.uk/")
+            self.driver.get(f"{BASE_WEB_URL}/")
             time.sleep(3)
             
             # Click Blacklist
