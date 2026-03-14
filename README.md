@@ -58,7 +58,7 @@ GEMINI_API_KEY=your_gemini_key
 
 # Market Settings
 MARKET_TARGET_URL=https://dool.co.kr/api
-MARKET_SOURCE_CHAT_ID=holempub_adultpc
+MARKET_SOURCE_CHAT_ID=@pcnara_ch
 ```
 
 Staging 예시:
